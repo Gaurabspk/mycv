@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaurab Sapkota - Portfolio</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #e74c3c; /* Red color */
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #2c3e50;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #e74c3c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Home Section */
+    #home {
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    #home .welcome-box {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #home .welcome-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #home h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    #home p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    #home .contact-info {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    #home .contact-info a {
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    #home .contact-info a:hover {
+      color: #e74c3c;
+    }
+
+    #home .contact-info p {
+      margin: 0.5rem 0;
+    }
+
+    /* About Section */
+    #about {
+      background-color: #ecf0f1;
+    }
+
+    /* Skills Section */
+    #skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    #skills ul li {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    #skills ul li:hover {
+      transform: scale(1.1);
+      background-color: #c0392b; /* Darker red */
+    }
+
+    /* Projects Section */
+    #projects .project {
+      background-color: #fff;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #projects .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #projects .project h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    #projects .project p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #fff;
+      padding: 4rem 2rem;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #contact input, #contact textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: #f9f9f9;
+    }
+
+    #contact button {
+      padding: 0.8rem;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #c0392b; /* Darker red */
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-links a:hover {
+      color: #e74c3c;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar with Dropdown -->
+  <nav>
+    <ul>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#about">👤 About</a></li>
+      <li class="dropdown">
+        <a href="#skills">💡 Skills</a>
+        <div class="dropdown-content">
+          <a href="#skills">💬 Communication</a>
+          <a href="#skills">✍️ Content Writing</a>
+          <a href="#skills">🎨 Graphic Design</a>
+          <a href="#skills">🎥 Video Editing</a>
+          <a href="#skills">📱 Social Media</a>
+        </div>
+      </li>
+      <li><a href="#projects">🚀 Projects</a></li>
+      <li><a href="#contact">📞 Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="welcome-box">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Hi, I'm <strong>Gaurab Sapkota</strong>, a passionate content creator, graphic designer, and video editor. 🎨✨</p>
+      <div class="contact-info">
+        <p>📧 Email: <a href="mailto:gaurabpromo@gmail.com">gaurabpromo@gmail.com</a></p>
+        <p>📞 Contact: <a href="tel:9766481043">9766481043</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a creative professional with expertise in <strong>graphic design</strong>, <strong>video editing</strong>, and <strong>content writing</strong>. I love bringing ideas to life through visuals and storytelling. With a keen eye for detail and a passion for creativity, I strive to deliver high-quality work that resonates with audiences.</p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>💬 Communication</li>
+      <li>✍️ Content Writing</li>
+      <li>🎨 Graphic Design</li>
+      <li>🎥 Video Editing</li>
+      <li>📱 Social Media Management</li>
+    </ul>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>🎥 Video Editing for YouTube Channels</h3>
+      <p>Edited and produced engaging video content for multiple YouTube channels, increasing viewer engagement by 30%.</p>
+    </div>
+    <div class="project">
+      <h3>📝 Content Writing for Blogs</h3>
+      <p>Created SEO-optimized blog posts for various niches, driving a 50% increase in organic traffic.</p>
+    </div>
+    <div class="project">
+      <h3>🎨 Graphic Design for Social Media</h3>
+      <p>Designed eye-catching social media posts and banners, boosting follower engagement by 40%.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/mvojzqzv" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="social-links">
+      <a href="https://www.instagram.com/gaurabspk/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/gaurab.sapkota.142" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+        Facebook
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Gaurab Sapkota. All rights reserved.</p>
+  </footer>
+</body>
+</html>
