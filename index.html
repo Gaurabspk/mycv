@@ -3,387 +3,816 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurab - Portfolio</title>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Gaurab - Tour Guide & Nepal Trekking Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        :root {
-            --primary-color: #6C63FF; /* Soft purple */
-            --secondary-color: #4A90E2; /* Soft blue */
-            --background-color: #F9F9F9; /* Light gray */
-            --text-color: #333333; /* Dark gray */
-            --card-bg: #FFFFFF; /* White */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #6C63FF, #4A90E2); /* Purple to blue gradient */
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
             line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f3;
         }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header */
-        header {
-            background: var(--gradient);
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        nav ul li a {
-            color: #fff;
+        
+        h1, h2, h3, h4 {
+            font-family: 'Roboto Slab', serif;
+            color: #2c5530;
             font-weight: 600;
-            transition: color 0.3s;
         }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
+        
+        a {
+            text-decoration: none;
+            color: inherit;
         }
-
-        /* Sections */
-        section {
-            padding: 2rem;
-            margin: 2rem auto;
+        
+        .container {
+            width: 100%;
             max-width: 1200px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        section h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             position: relative;
         }
-
-        section h2::after {
+        
+        .section-title::after {
             content: '';
             position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #4a7c59;
             bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary-color);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
-
-        /* About Section */
-        #about {
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #4a7c59;
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #3a6348;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
+            padding-top: 80px;
         }
-
-        #about p {
-            font-size: 1.1rem;
+        
+        .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-
-        /* Projects Section */
-        #projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        .project {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 10px;
         }
-
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: #ffd166;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
-
-        .project h3 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 1.5rem;
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #f1f1f1;
         }
-
-        .project p {
-            margin: 1rem 0;
-            color: #555;
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(42, 77, 57, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
-
-        .project a {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background: var(--gradient);
-            color: #fff;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Skills Section */
-        #skills ul {
+        
+        .nav-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 0;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: #ffd166;
+        }
+        
+        .nav-links {
+            display: flex;
             list-style: none;
         }
-
-        #skills ul li {
-            background: var(--gradient);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: 600;
+        
+        .nav-links li {
+            margin-left: 30px;
         }
-
-        /* Contact Section */
-        #contact form {
-            display: grid;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-
-        #contact input, #contact textarea {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background: var(--card-bg);
-            color: var(--text-color);
-            font-size: 1rem;
+        
+        .nav-links a:hover {
+            color: #ffd166;
         }
-
-        #contact button {
-            background: var(--gradient);
-            color: #fff;
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        #contact button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
-
-        /* Footer */
-        footer {
-            background: var(--gradient);
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
+        
+        .about-text {
+            flex: 1;
         }
-
-        footer p {
-            margin: 0.5rem 0;
+        
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
         }
-
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Destinations/Services Section */
+        .destinations {
+            background-color: #f0f4f0;
+        }
+        
+        .destinations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            padding: 20px;
+            background-color: #4a7c59;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-body p {
+            color: #666;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: #4a7c59;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            gap: 15px;
         }
-
+        
         .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: transform 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #4a7c59;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
-
+        
         .social-links a:hover {
-            transform: translateY(-3px);
-            color: var(--primary-color);
+            background-color: #3a6348;
+            transform: translateY(-5px);
         }
-
-        /* Responsive Design */
+        
+        /* Contact Form */
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #4a7c59;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c5530;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: #ffd166;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: #ffd166;
+            color: #2c5530;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
         @media (max-width: 768px) {
-            header h1 {
+            .section-title {
                 font-size: 2rem;
             }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
             }
-
-            #projects {
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #2c5530;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .destinations-container {
                 grid-template-columns: 1fr;
             }
-
-            .project {
-                padding: 1rem;
-            }
-
-            #skills ul {
-                justify-content: center;
-            }
-
-            #contact form {
-                padding: 1rem;
-            }
+        }
+        
+        /* Animation for sections */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Gaurab Sapkota</h1>
-        <nav>
-            <ul>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Gaurab<span>.</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#destinations">Destinations</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="home">
+        <div class="container hero-content fade-in">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Gaurab - Travel Guide" class="profile-img">
+            <h1>Gaurab</h1>
+            <h2>Travel Guide & Nepal Travel Expert</h2>
+            <p class="tagline">"Helping travelers explore Nepal 🇳🇵 | 100+ happy clients"</p>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
     </header>
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
-        <p>
-           Hi, I'm Gaurab Sapkota, a Computer Science student with a passion for IT and business. I enjoy tackling technical challenges and exploring innovative business solutions. Check out my work, and feel free to reach out for opportunities or collaborations!
-            Welcome to my portfolio!
-        </p>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Football Quiz Game</h3>
-            <p>
-                A fun and interactive football quiz game built using HTML, CSS, and JavaScript.
-            </p>
-            <a href="https://gaurabspk.github.io/game/" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Memory Test Puzzle Game</h3>
-            <p>
-                A challenging memory test puzzle game to test your cognitive skills.
-            </p>
-            <a href="#" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Memory Match Game</h3>
-            <p>
-                A classic memory match game where you match pairs of cards.
-            </p>
-            <a href="https://gaurabspk.github.io/Mem/" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Minimalist Puzzle Game</h3>
-            <p>
-                A minimalist puzzle game with clean design and engaging gameplay.
-            </p>
-            <a href="https://gaurabspk.github.io/game1/" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Currency Converter App</h3>
-            <p>
-                A currency converter app that supports real-time exchange rates.
-            </p>
-            <a href="https://gaurabspk.github.io/currency/" target="_blank">View Project</a>
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Hello! I'm Gaurab, a passionate and experienced travel guide specializing in Nepalese adventures. With over 8 years of experience in the tourism industry, I have guided hundreds of travelers through the majestic Himalayas and cultural treasures of Nepal.</p>
+                    <p>My expertise includes trekking routes at all difficulty levels, cultural tours, wildlife safaris, and spiritual journeys. I'm fluent in English, Hindi, and Nepali, and have a deep understanding of local customs and traditions.</p>
+                    <p>I take pride in creating personalized itineraries that match each traveler's interests and fitness levels. Whether you're seeking an epic Everest Base Camp trek, a peaceful retreat in Pokhara, or a cultural immersion in Kathmandu Valley, I'll ensure you have an authentic and unforgettable experience.</p>
+                    <p>My mission is to help travelers from all over the world discover the beauty, culture, and adventure that Nepal has to offer while ensuring their safety and comfort throughout the journey.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nepal Landscape">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Communication</li>
-            <li>Graphics Design</li>
-            <li>SEO Optimization</li>
-        </ul>
+    <!-- Destinations / Services Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <h2 class="section-title fade-in">Destinations & Services</h2>
+            <div class="destinations-container">
+                <!-- Trekking Routes -->
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Everest Base Camp</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>The ultimate trekking adventure to the base of the world's highest mountain. Experience Sherpa culture, breathtaking views, and a sense of achievement.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-hiking"></i>
+                        <h3>Annapurna Circuit</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>One of the world's classic treks circling the Annapurna Massif, featuring diverse landscapes from subtropical forests to high-altitude deserts.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Annapurna Base Camp</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>A shorter but spectacular trek that takes you into the heart of the Annapurna Sanctuary surrounded by towering peaks.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-tree"></i>
+                        <h3>Langtang Valley</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Known as the "valley of glaciers," this trek offers stunning mountain scenery and a chance to experience Tamang culture.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-map-signs"></i>
+                        <h3>Manaslu Circuit</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>A challenging and less crowded trek around the eighth highest mountain in the world, offering pristine landscapes and rich cultural encounters.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-fort-awesome"></i>
+                        <h3>Upper Mustang</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Explore the ancient Kingdom of Lo, a remote region with Tibetan-influenced culture, cave dwellings, and a dramatic desert landscape.</p>
+                    </div>
+                </div>
+                
+                <!-- City Tours -->
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-city"></i>
+                        <h3>Pokhara Tour</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Discover Nepal's adventure capital with its serene lakes, stunning mountain views, and vibrant nightlife.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-torii-gate"></i>
+                        <h3>Kathmandu Tour</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Immerse yourself in the cultural heart of Nepal with visits to ancient temples, palaces, and bustling markets.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-paw"></i>
+                        <h3>Chitwan Safari</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Experience jungle safaris in Chitwan National Park, home to rhinos, tigers, elephants, and diverse birdlife.</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-peace"></i>
+                        <h3>Lumbini Pilgrimage</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Visit the birthplace of Lord Buddha and explore monasteries from different Buddhist traditions around the world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact</h2>
-        <form id="contactForm" action="https://formspree.io/f/mrbpzbyl" method="POST">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:gaurabpromo@gmail.com">mailto:gaurabpromo@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <h4>Instagram</h4>
+                                <a href="https://www.instagram.com/nepalhimalayanjourneys/" target="_blank">@gaurab_nepal_travel</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/9779801234567" target="_blank">+977 980 123 4567</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/nepalhimalayanjourneys/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/gaurab.sapkota.142" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/9766481043" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Gaurab. All rights reserved.</p>
-        <div class="social-links">
-            <a href="mailto:gaurabpromo@gmail.com" target="_blank" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.instagram.com/gaurabspk/" target="_blank" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Gaurab Sapkota<span>.</span></div>
+                <p>Travel Guide & Nepal Travel Expert</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/nepalhimalayanjourneys/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/gaurab.sapkota.142" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/9779801234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                  
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Gaurab - Travel Guide & Nepal Expert. All rights reserved.
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Form Submission Alert
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            fetch(this.action, {
-                method: this.method,
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show alert
+            alert(`Thank you ${name}! Your message has been sent successfully. I will get back to you at ${email} soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
                 }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Thank you for reaching out! I will get back to you soon.');
-                    this.reset();
-                } else {
-                    alert('Oops! Something went wrong. Please try again.');
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
-            }).catch(error => {
-                alert('Oops! Something went wrong. Please try again.');
             });
         });
     </script>
