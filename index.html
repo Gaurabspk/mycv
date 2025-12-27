@@ -174,7 +174,6 @@
             overflow: hidden;
             border: 5px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            position: relative;
         }
         
         .profile-img {
@@ -186,20 +185,6 @@
         
         .profile-img:hover {
             transform: scale(1.05);
-        }
-        
-        .profile-img-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
         }
         
         .hero-content h1 {
@@ -363,24 +348,6 @@
             margin-top: 8px;
         }
         
-        .about-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
         /* Certifications */
         .certifications {
             display: flex;
@@ -404,9 +371,34 @@
             color: var(--secondary-color);
         }
         
-        /* Destinations Section */
+        /* Destinations Section - Detailed Cards */
         .destinations {
             background-color: #f9f7f2;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
         
         .destinations-container {
@@ -425,32 +417,16 @@
         }
         
         .destination-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
-        .destination-image {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
+        .destination-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .destination-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .destination-card:hover .destination-image img {
-            transform: scale(1.1);
-        }
-        
-        .destination-content {
-            padding: 25px;
-        }
-        
-        .destination-content h3 {
+        .destination-header h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--primary-color);
@@ -459,55 +435,21 @@
             gap: 10px;
         }
         
-        .destination-content h3 i {
+        .destination-header h3 i {
             color: var(--secondary-color);
         }
         
-        .destination-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .destination-details {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .detail-item {
-            text-align: center;
-        }
-        
-        .detail-item span:first-child {
-            display: block;
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 0.9rem;
-        }
-        
-        .detail-item span:last-child {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-        
         .destination-type {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            display: inline-block;
+            padding: 5px 15px;
             background-color: var(--primary-color);
             color: white;
-            padding: 8px 15px;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            z-index: 2;
+            margin-top: 5px;
         }
         
         .trekking {
@@ -516,6 +458,120 @@
         
         .city-tour {
             background-color: var(--accent-color);
+        }
+        
+        .destination-content {
+            padding: 20px 25px;
+        }
+        
+        .destination-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .destination-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(10, 77, 60, 0.03);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .detail-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .destination-footer {
+            padding: 20px 25px;
+            background-color: rgba(10, 77, 60, 0.03);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price-container {
+            text-align: right;
+        }
+        
+        .price-from {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .price-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        /* Best Time to Visit */
+        .best-time {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .best-time i {
+            color: var(--secondary-color);
+        }
+        
+        /* Difficulty Rating */
+        .difficulty {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .difficulty.easy {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .difficulty.moderate {
+            background-color: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .difficulty.challenging {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .difficulty.difficult {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
         }
         
         /* Testimonials */
@@ -862,10 +918,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .about-image {
-                order: -1;
-            }
-            
             .section-title h2 {
                 font-size: 2.4rem;
             }
@@ -948,6 +1000,20 @@
             .stats-container {
                 grid-template-columns: 1fr;
             }
+            
+            .destination-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .destination-footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .price-container {
+                text-align: center;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1007,20 +1073,16 @@
         <div class="container">
             <div class="hero-content">
                 <div class="profile-img-container">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQLorU6aRQlXklFQXNmvXfjmIPnn762x_NNvtdECRwbUC6mItJMOVnCMfFIbSg6D7gpGtVY1wQ4XtnjYE24xXEh7VUfM1Ext35WWx8D-dFc1fWgbfb_-G_aTJwiQAZxsB9H5e4YjH6fuzSOwoBGNcsaGvAmhBkRaL6q1lDkCDaExgFo7BTmMXaAe3u4A/s320/604340530_17937443538128190_4051597627292607446_n.jpg" 
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQLorU6aRQlXklFQXNmvXfjmIPnn762x_NNvtdECRwbUC6mItJMOVnCMfFIbSg6D7gpGtVY1wQ4XtnjYE24xXEh7VUfM1Ext35WWx8D-dFc1fWgbfb_-G_aTJwiQAZxsB9H5e4YjH6fuzSOwoBGNcsaGvAmhBkRaL6q1lDkCDaExgFo7BTmMXaAe3u4A/s1080/604340530_17937443538128190_4051597627292607446_n.jpg" 
                          alt="Gaurab Sapkota - Nepal Travel Guide" 
-                         class="profile-img"
-                         onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
-                    <div class="profile-img-fallback" id="profileFallback" style="display: none;">
-                        <i class="fas fa-user"></i>
-                    </div>
+                         class="profile-img">
                 </div>
                 <h1>Gaurab Sapkota</h1>
                 <h2>Professional Travel Guide & Nepal Himalayan Expert</h2>
-                <p class="tagline">"Helping travelers explore the majestic Himalayas of Nepal 🇳🇵 | 100+ happy clients | Certified Guide | Customized trekking experiences | Cultural immersion tours"</p>
+                <p class="tagline">"Helping travelers explore the majestic Himalayas of Nepal 🇳🇵 | 100+ happy clients | Certified Guide | Customized trekking experiences | All-inclusive packages"</p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn">Book Your Adventure</a>
-                    <a href="#destinations" class="btn btn-secondary">Explore Destinations</a>
+                    <a href="#destinations" class="btn btn-secondary">View Package Rates</a>
                 </div>
             </div>
         </div>
@@ -1038,7 +1100,7 @@
                     <h3>Your Expert Guide to Nepal's Himalayas</h3>
                     <p>Hello! I'm <strong>Gaurab Sapkota</strong>, founder of Nepal Himalayan Journeys. Born and raised in the foothills of the Himalayas, I have an intimate knowledge of Nepal's diverse landscapes, cultures, and trekking routes.</p>
                     <p>My passion for adventure and deep respect for Nepal's natural beauty led me to become a professional travel guide. I'm certified by the Nepal Government Ministry of Tourism and have successfully guided over 100 groups through challenging and rewarding treks.</p>
-                    <p>I specialize in creating <strong>personalized itineraries</strong> that match your fitness level, interests, and timeline. Whether you're seeking a challenging high-altitude trek or a cultural exploration of ancient cities, I ensure a safe, authentic, and unforgettable experience.</p>
+                    <p>I specialize in creating <strong>personalized itineraries</strong> that match your fitness level, interests, and budget. Whether you're seeking a challenging high-altitude trek or a cultural exploration of ancient cities, I ensure a safe, authentic, and unforgettable experience.</p>
                     
                     <div class="certifications">
                         <div class="cert-badge">
@@ -1065,13 +1127,28 @@
                             <div class="stat-label">Happy Clients</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">15+</div>
+                            <div class="stat-number">25+</div>
                             <div class="stat-label">Destinations</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image fade-in">
-                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gaurab guiding in Himalayas">
+                <div class="about-text fade-in">
+                    <h3>Why Choose My Services?</h3>
+                    <p><strong>All-Inclusive Packages:</strong> No hidden costs - includes permits, accommodation, meals, transportation, and guide services.</p>
+                    <p><strong>Safety First:</strong> Wilderness first aid certified, satellite communication, and emergency evacuation plans.</p>
+                    <p><strong>Cultural Insight:</strong> Deep connections with local communities for authentic experiences.</p>
+                    <p><strong>Flexible Itineraries:</strong> Customized based on your fitness, interests, and timeframe.</p>
+                    
+                    <h3 style="margin-top: 30px;">Package Inclusions</h3>
+                    <ul style="color: var(--text-light); margin-top: 15px; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">✔ Professional licensed guide</li>
+                        <li style="margin-bottom: 10px;">✔ All necessary permits and fees</li>
+                        <li style="margin-bottom: 10px;">✔ Accommodation (teahouse/lodge/hotel)</li>
+                        <li style="margin-bottom: 10px;">✔ All meals during trekking</li>
+                        <li style="margin-bottom: 10px;">✔ Airport transfers and ground transportation</li>
+                        <li style="margin-bottom: 10px;">✔ Porter service (1 porter per 2 clients)</li>
+                        <li style="margin-bottom: 10px;">✔ First aid kit and emergency oxygen</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1081,210 +1158,573 @@
     <section id="destinations" class="destinations">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>Popular Destinations</h2>
-                <p>Explore Nepal's most spectacular trekking routes and cultural destinations with expert guidance</p>
+                <h2>Popular Destinations & Packages</h2>
+                <p>Detailed information on all popular trekking routes and cultural tours with complete pricing</p>
             </div>
+            
+            <div class="filter-container fade-in">
+                <button class="filter-btn active" data-filter="all">All Destinations</button>
+                <button class="filter-btn" data-filter="trekking">Trekking Routes</button>
+                <button class="filter-btn" data-filter="tour">City & Cultural Tours</button>
+                <button class="filter-btn" data-filter="peak">Peak Climbing</button>
+            </div>
+            
             <div class="destinations-container">
-                <!-- Trekking Routes -->
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://www.trekkingtoeverest.com/trip/everest-base-camp-trek-12-days/" alt="Everest Base Camp">
-                        <div class="destination-type trekking">Trekking</div>
+                <!-- Everest Base Camp -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-mountain"></i> Everest Base Camp Trek</h3>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty challenging">Challenging</div>
                     </div>
+                    
                     <div class="destination-content">
-                        <h3><i class="fas fa-mountain"></i> Everest Base Camp</h3>
-                        <p>The ultimate trekking adventure to the base of the world's highest mountain. Experience Sherpa culture, breathtaking views, and a sense of achievement.</p>
+                        <p class="destination-description">The ultimate trekking adventure to the base of the world's highest mountain (8,848m). Experience Sherpa culture, visit Tengboche Monastery, and witness breathtaking Himalayan vistas.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>12-14 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">14 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Difficulty</span>
-                                <span>Challenging</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">5,545m (EBC)</span>
                             </div>
                             <div class="detail-item">
-                                <span>Max Altitude</span>
-                                <span>5,545m</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">-10°C to 15°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">5-7 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: March-May & Sept-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$1,350</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://www.tripadvisor.com/Attraction_Review-g293891-d15610061-Reviews-Annapurna_Base_Camp_Trek-Pokhara_Gandaki_Zone_Western_Region.html" alt="Annapurna Circuit">
-                        <div class="destination-type trekking">Trekking</div>
-                    </div>
-                    <div class="destination-content">
+                <!-- Annapurna Circuit -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
                         <h3><i class="fas fa-hiking"></i> Annapurna Circuit</h3>
-                        <p>One of the world's classic treks circling the Annapurna Massif, featuring diverse landscapes from subtropical forests to high-altitude deserts.</p>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty challenging">Challenging</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">One of the world's classic treks circling the Annapurna Massif. Cross the Thorong La Pass (5,416m), experience diverse landscapes from subtropical forests to high-altitude deserts.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>15-20 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">18 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Difficulty</span>
-                                <span>Moderate-Hard</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">5,416m</span>
                             </div>
                             <div class="detail-item">
-                                <span>Max Altitude</span>
-                                <span>5,416m</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">-5°C to 20°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">5-7 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: March-May & Sept-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$1,250</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://images.unsplash.com/photo-1628746406382-32186c44fd6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Annapurna Base Camp">
-                        <div class="destination-type trekking">Trekking</div>
-                    </div>
-                    <div class="destination-content">
+                <!-- Annapurna Base Camp -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
                         <h3><i class="fas fa-campground"></i> Annapurna Base Camp</h3>
-                        <p>A shorter but spectacular trek that takes you into the heart of the Annapurna Sanctuary surrounded by towering peaks.</p>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty moderate">Moderate</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">A spectacular trek into the heart of the Annapurna Sanctuary surrounded by towering peaks. Experience Gurung culture and natural hot springs at Jhinu Danda.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>7-10 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">10 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Difficulty</span>
-                                <span>Moderate</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">4,130m</span>
                             </div>
                             <div class="detail-item">
-                                <span>Max Altitude</span>
-                                <span>4,130m</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">0°C to 20°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">5-6 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: Oct-Nov & March-April</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$850</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://images.unsplash.com/photo-1622017699716-6b5e6f7e2884?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Langtang Valley">
-                        <div class="destination-type trekking">Trekking</div>
+                <!-- Langtang Valley -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-tree"></i> Langtang Valley Trek</h3>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty moderate">Moderate</div>
                     </div>
+                    
                     <div class="destination-content">
-                        <h3><i class="fas fa-tree"></i> Langtang Valley</h3>
-                        <p>Known as the "valley of glaciers," this trek offers stunning mountain scenery and a chance to experience Tamang culture.</p>
+                        <p class="destination-description">Known as the "valley of glaciers," this trek offers stunning mountain scenery and Tamang culture. Close to Kathmandu, perfect for those with limited time.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>7-10 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">9 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Difficulty</span>
-                                <span>Moderate</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">4,984m</span>
                             </div>
                             <div class="detail-item">
-                                <span>Max Altitude</span>
-                                <span>4,984m</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">-5°C to 18°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">4-6 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: March-May & Sept-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$750</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://himalayan-masters.com/travel-guides/overcome-langtang-trek-difficulty/" alt="Manaslu Circuit">
-                        <div class="destination-type trekking">Trekking</div>
-                    </div>
-                    <div class="destination-content">
+                <!-- Manaslu Circuit -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
                         <h3><i class="fas fa-map-signs"></i> Manaslu Circuit</h3>
-                        <p>A challenging and less crowded trek around the eighth highest mountain in the world, offering pristine landscapes.</p>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty difficult">Difficult</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">A challenging and less crowded trek around the eighth highest mountain. Restricted area requiring special permits, offering pristine landscapes and rich cultural encounters.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>14-18 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">16 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Difficulty</span>
-                                <span>Challenging</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">5,106m</span>
                             </div>
                             <div class="detail-item">
-                                <span>Max Altitude</span>
-                                <span>5,106m</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">-10°C to 15°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">6-8 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: April-May & Oct-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$1,450</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://images.unsplash.com/photo-1526392587636-9a0e8a0e5c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pokhara">
-                        <div class="destination-type city-tour">City Tour</div>
+                <!-- Upper Mustang -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-fort-awesome"></i> Upper Mustang Trek</h3>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty moderate">Moderate</div>
                     </div>
+                    
                     <div class="destination-content">
-                        <h3><i class="fas fa-lake"></i> Pokhara Tour</h3>
-                        <p>Discover Nepal's adventure capital with its serene lakes, stunning mountain views, paragliding, and vibrant nightlife.</p>
+                        <p class="destination-description">Explore the ancient Kingdom of Lo, a remote region with Tibetan-influenced culture, cave dwellings, and dramatic desert landscape. Special restricted area permit required.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>2-3 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">14 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Activities</span>
-                                <span>Sightseeing</span>
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">3,840m</span>
                             </div>
                             <div class="detail-item">
-                                <span>Best For</span>
-                                <span>All Travelers</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">0°C to 25°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">5-6 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: May-October</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$1,650</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://images.unsplash.com/photo-1585504205973-d7a7ce7b24b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kathmandu">
-                        <div class="destination-type city-tour">City Tour</div>
+                <!-- Pokhara Tour -->
+                <div class="destination-card fade-in" data-category="tour">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-lake"></i> Pokhara City Tour</h3>
+                        <span class="destination-type city-tour">City Tour</span>
+                        <div class="difficulty easy">Easy</div>
                     </div>
+                    
                     <div class="destination-content">
-                        <h3><i class="fas fa-torii-gate"></i> Kathmandu Tour</h3>
-                        <p>Immerse yourself in the cultural heart of Nepal with visits to ancient temples, palaces, and bustling markets.</p>
+                        <p class="destination-description">Discover Nepal's adventure capital with its serene Phewa Lake, stunning mountain views, paragliding, boating, and vibrant nightlife. Perfect for relaxation and adventure.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>3-4 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">3 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Activities</span>
-                                <span>Cultural</span>
+                                <span class="detail-label">Activities</span>
+                                <span class="detail-value">Sightseeing</span>
                             </div>
                             <div class="detail-item">
-                                <span>Best For</span>
-                                <span>Culture Lovers</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">15°C to 30°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Accommodation</span>
+                                <span class="detail-value">3-4 Star Hotel</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: Year Round</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$250</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="destination-card fade-in">
-                    <div class="destination-image">
-                        <img src="https://images.unsplash.com/photo-1599580420608-4f7c6f283eb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Chitwan">
-                        <div class="destination-type city-tour">Safari</div>
+                <!-- Kathmandu Tour -->
+                <div class="destination-card fade-in" data-category="tour">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-torii-gate"></i> Kathmandu Valley Tour</h3>
+                        <span class="destination-type city-tour">Cultural Tour</span>
+                        <div class="difficulty easy">Easy</div>
                     </div>
+                    
                     <div class="destination-content">
-                        <h3><i class="fas fa-paw"></i> Chitwan Safari</h3>
-                        <p>Experience jungle safaris in Chitwan National Park, home to rhinos, tigers, elephants, and diverse birdlife.</p>
+                        <p class="destination-description">Immerse yourself in the cultural heart of Nepal with visits to ancient temples, palaces, and bustling markets. Includes UNESCO World Heritage Sites and traditional Nepali cuisine.</p>
+                        
                         <div class="destination-details">
                             <div class="detail-item">
-                                <span>Duration</span>
-                                <span>2-3 days</span>
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">4 Days</span>
                             </div>
                             <div class="detail-item">
-                                <span>Activities</span>
-                                <span>Wildlife</span>
+                                <span class="detail-label">Sites</span>
+                                <span class="detail-value">7 UNESCO Sites</span>
                             </div>
                             <div class="detail-item">
-                                <span>Best For</span>
-                                <span>Nature Lovers</span>
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">10°C to 28°C</span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Transport</span>
+                                <span class="detail-value">Private Vehicle</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: Oct-April</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$350</div>
+                            <div class="price-note">per person</div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Chitwan Safari -->
+                <div class="destination-card fade-in" data-category="tour">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-paw"></i> Chitwan Safari Tour</h3>
+                        <span class="destination-type city-tour">Wildlife Safari</span>
+                        <div class="difficulty easy">Easy</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">Experience jungle safaris in Chitwan National Park, home to one-horned rhinos, Bengal tigers, elephants, crocodiles, and diverse birdlife. Includes jungle walks, canoe rides, and cultural shows.</p>
+                        
+                        <div class="destination-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">3 Days</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Activities</span>
+                                <span class="detail-value">Safari, Canoe</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">20°C to 35°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Accommodation</span>
+                                <span class="detail-value">Jungle Resort</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: Oct-March</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$300</div>
+                            <div class="price-note">per person</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lumbini Pilgrimage -->
+                <div class="destination-card fade-in" data-category="tour">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-peace"></i> Lumbini Pilgrimage Tour</h3>
+                        <span class="destination-type city-tour">Pilgrimage</span>
+                        <div class="difficulty easy">Easy</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">Visit the birthplace of Lord Buddha and explore monasteries from different Buddhist traditions around the world. Spiritual journey through ancient ruins and meditation centers.</p>
+                        
+                        <div class="destination-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">2 Days</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Monasteries</span>
+                                <span class="detail-value">20+ Countries</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">15°C to 32°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Focus</span>
+                                <span class="detail-value">Spiritual</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: Oct-April</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$200</div>
+                            <div class="price-note">per person</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Island Peak -->
+                <div class="destination-card fade-in" data-category="peak">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-mountain"></i> Island Peak Climbing</h3>
+                        <span class="destination-type trekking">Peak Climbing</span>
+                        <div class="difficulty difficult">Difficult</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">Popular trekking peak (6,189m) in the Everest region. Requires basic mountaineering skills. Combines Everest Base Camp trek with a summit attempt. Includes climbing training.</p>
+                        
+                        <div class="destination-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">18 Days</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">6,189m</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">-15°C to 10°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Climbing Gear</span>
+                                <span class="detail-value">Included</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: April-May & Oct-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$2,450</div>
+                            <div class="price-note">per person</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mardi Himal -->
+                <div class="destination-card fade-in" data-category="trekking">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-eye"></i> Mardi Himal Trek</h3>
+                        <span class="destination-type trekking">Trekking</span>
+                        <div class="difficulty moderate">Moderate</div>
+                    </div>
+                    
+                    <div class="destination-content">
+                        <p class="destination-description">Newer trekking route with spectacular views of Mardi Himal, Machhapuchhre, and Annapurna range. Less crowded, through beautiful rhododendron forests and traditional villages.</p>
+                        
+                        <div class="destination-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">7 Days</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Max Altitude</span>
+                                <span class="detail-value">4,500m</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Temperature</span>
+                                <span class="detail-value">0°C to 20°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Walking</span>
+                                <span class="detail-value">4-6 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="best-time">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Best Time: March-May & Sept-Nov</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-footer">
+                        <a href="#contact" class="btn">Inquire Now</a>
+                        <div class="price-container">
+                            <div class="price-from">Starting from</div>
+                            <div class="price-amount">$650</div>
+                            <div class="price-note">per person</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="price-note" style="text-align: center; margin-top: 40px; color: var(--text-light); font-style: italic;">
+                <p><strong>Note:</strong> All prices are for groups of 2+ people. Solo travelers and private group rates available. Prices include all permits, accommodation, meals during trekking, guide, porter, and transportation. International flights and travel insurance not included.</p>
             </div>
         </div>
     </section>
@@ -1298,23 +1738,21 @@
             </div>
             <div class="testimonial-container">
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Gaurab made our Everest Base Camp trek an unforgettable experience. His knowledge of the trails, Sherpa culture, and attention to safety was exceptional. He went above and beyond to ensure our comfort and enjoyment."</p>
+                    <p class="testimonial-text">"Gaurab made our Everest Base Camp trek an unforgettable experience. His knowledge of the trails, Sherpa culture, and attention to safety was exceptional. The all-inclusive package meant no surprises - everything was taken care of!"</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="author-img">
                         <div class="author-info">
                             <h4>Michael Johnson</h4>
-                            <p>USA | Everest Base Camp Trek</p>
+                            <p>USA | Everest Base Camp Trek | April 2023</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"As a solo female traveler, I felt completely safe with Gaurab. He tailored the Annapurna Circuit trek to my pace and was incredibly knowledgeable about the flora, fauna, and local cultures. Highly recommended!"</p>
+                    <p class="testimonial-text">"As a solo female traveler, I felt completely safe with Gaurab. He tailored the Annapurna Circuit to my pace and was incredibly knowledgeable. The price was very reasonable for everything included. Highly recommended!"</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="author-img">
                         <div class="author-info">
                             <h4>Sarah Williams</h4>
-                            <p>Australia | Annapurna Circuit</p>
+                            <p>Australia | Annapurna Circuit | October 2023</p>
                         </div>
                     </div>
                 </div>
@@ -1322,10 +1760,9 @@
                 <div class="testimonial-card fade-in">
                     <p class="testimonial-text">"Our family trip to Nepal was perfect thanks to Gaurab. He created a balanced itinerary with trekking, cultural experiences, and wildlife safari. His connections with local communities gave us authentic experiences we'll cherish forever."</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Client" class="author-img">
                         <div class="author-info">
                             <h4>Robert Chen</h4>
-                            <p>Singapore | Family Tour</p>
+                            <p>Singapore | Family Tour | December 2023</p>
                         </div>
                     </div>
                 </div>
@@ -1343,7 +1780,7 @@
             <div class="contact-container">
                 <div class="contact-info fade-in">
                     <h3>Let's Plan Your Journey</h3>
-                    <p>I'll help you create a personalized itinerary based on your interests, fitness level, and timeframe. Contact me for a free consultation.</p>
+                    <p>I'll help you create a personalized itinerary based on your interests, fitness level, and budget. Contact me for a free consultation and detailed quotation.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -1427,24 +1864,37 @@
                             <label for="destination">Destination Interest</label>
                             <select id="destination" name="destination">
                                 <option value="">Select a destination</option>
-                                <option value="Everest Base Camp">Everest Base Camp</option>
-                                <option value="Annapurna Circuit">Annapurna Circuit</option>
-                                <option value="Annapurna Base Camp">Annapurna Base Camp</option>
-                                <option value="Langtang Valley">Langtang Valley</option>
-                                <option value="Manaslu Circuit">Manaslu Circuit</option>
-                                <option value="Pokhara Tour">Pokhara Tour</option>
-                                <option value="Kathmandu Tour">Kathmandu Tour</option>
-                                <option value="Chitwan Safari">Chitwan Safari</option>
+                                <option value="Everest Base Camp">Everest Base Camp ($1,350)</option>
+                                <option value="Annapurna Circuit">Annapurna Circuit ($1,250)</option>
+                                <option value="Annapurna Base Camp">Annapurna Base Camp ($850)</option>
+                                <option value="Langtang Valley">Langtang Valley ($750)</option>
+                                <option value="Manaslu Circuit">Manaslu Circuit ($1,450)</option>
+                                <option value="Upper Mustang">Upper Mustang ($1,650)</option>
+                                <option value="Pokhara Tour">Pokhara Tour ($250)</option>
+                                <option value="Kathmandu Tour">Kathmandu Tour ($350)</option>
+                                <option value="Chitwan Safari">Chitwan Safari ($300)</option>
+                                <option value="Island Peak">Island Peak Climbing ($2,450)</option>
                                 <option value="Custom Itinerary">Custom Itinerary</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Your Message *</label>
-                            <textarea id="message" name="message" placeholder="Tell me about your travel plans, group size, preferred dates, and any special requirements..." required></textarea>
+                            <label for="travelers">Number of Travelers</label>
+                            <select id="travelers" name="travelers">
+                                <option value="1">1 Person</option>
+                                <option value="2" selected>2 People</option>
+                                <option value="3-4">3-4 People</option>
+                                <option value="5-6">5-6 People</option>
+                                <option value="7+">7+ People</option>
+                            </select>
                         </div>
                         
-                        <button type="submit" class="btn">Send Message</button>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your travel plans, preferred dates, fitness level, and any special requirements..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Get Detailed Quotation</button>
                     </form>
                 </div>
             </div>
@@ -1457,7 +1907,7 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h3>Nepal Himalayan Journeys</h3>
-                    <p>Professional guided treks and cultural tours in Nepal. Experience the Himalayas with an expert local guide.</p>
+                    <p>Professional guided treks and cultural tours in Nepal. Experience the Himalayas with an expert local guide. All-inclusive packages with transparent pricing.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/nepalhimalayanjourneys/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/gaurab.sapkota.142" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -1471,7 +1921,7 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Me</a></li>
-                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#destinations">Destinations & Rates</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1480,11 +1930,11 @@
                 <div class="footer-col">
                     <h3>Popular Treks</h3>
                     <ul class="footer-links">
-                        <li><a href="#destinations">Everest Base Camp</a></li>
-                        <li><a href="#destinations">Annapurna Circuit</a></li>
-                        <li><a href="#destinations">Langtang Valley</a></li>
-                        <li><a href="#destinations">Manaslu Circuit</a></li>
-                        <li><a href="#destinations">Annapurna Base Camp</a></li>
+                        <li><a href="#destinations">Everest Base Camp - $1,350</a></li>
+                        <li><a href="#destinations">Annapurna Circuit - $1,250</a></li>
+                        <li><a href="#destinations">Langtang Valley - $750</a></li>
+                        <li><a href="#destinations">Manaslu Circuit - $1,450</a></li>
+                        <li><a href="#destinations">Annapurna Base Camp - $850</a></li>
                     </ul>
                 </div>
                 
@@ -1501,13 +1951,13 @@
             
             <div class="copyright">
                 <p>&copy; 2023 Nepal Himalayan Journeys by Gaurab Sapkota. All rights reserved.</p>
-                <p>Professional Travel Guide | Nepal Tourism License: #####</p>
+                <p>Professional Travel Guide | Nepal Tourism License: ##### | All prices in USD</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/9779766481043?text=Hello%20Gaurab!%20I%20saw%20your%20portfolio%20and%20am%20interested%20in%20planning%20a%20trip%20to%20Nepal." target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/9779766481043?text=Hello%20Gaurab!%20I%20saw%20your%20portfolio%20and%20am%20interested%20in%20planning%20a%20trip%20to%20Nepal.%20Can%20you%20send%20me%20more%20details%20about%20your%20packages?" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1555,6 +2005,37 @@
             });
         });
         
+        // Filter destinations
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const destinationCards = document.querySelectorAll('.destination-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                destinationCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
         // Contact form submission with validation
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
@@ -1567,6 +2048,7 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const destination = document.getElementById('destination').value;
+            const travelers = document.getElementById('travelers').value;
             const message = document.getElementById('message').value;
             
             // Simple validation
@@ -1584,14 +2066,17 @@
                 return;
             }
             
-            // Simulate form submission (in a real site, this would be an AJAX call to a server)
-            formStatus.textContent = `Thank you, ${name}! Your message has been sent successfully. I will contact you within 24 hours at ${email} to discuss your ${destination || 'Nepal'} adventure.`;
+            // Success message
+            const destinationText = destination ? ` for ${destination}` : '';
+            const travelersText = travelers ? ` (${travelers} traveler${travelers > 1 ? 's' : ''})` : '';
+            
+            formStatus.textContent = `Thank you, ${name}! Your inquiry has been sent successfully. I will contact you within 24 hours at ${email} with a detailed quotation${destinationText}${travelersText}.`;
             formStatus.className = 'form-status success';
             
             // In a real implementation, you would send data to a server here
-            console.log('Form submitted:', { name, email, phone, destination, message });
+            console.log('Form submitted:', { name, email, phone, destination, travelers, message });
             
-            // Reset form after 5 seconds
+            // Reset form after 8 seconds
             setTimeout(() => {
                 contactForm.reset();
                 formStatus.textContent = '';
@@ -1628,26 +2113,6 @@
                 nav.style.padding = '20px 0';
             }
         });
-        
-        // Add fallback for profile image if it fails to load
-        document.addEventListener('DOMContentLoaded', function() {
-            const profileImg = document.querySelector('.profile-img');
-            const profileFallback = document.getElementById('profileFallback');
-            
-            // Check if image loaded successfully
-            if (profileImg.complete && profileImg.naturalHeight === 0) {
-                // Image failed to load
-                profileImg.style.display = 'none';
-                profileFallback.style.display = 'flex';
-            }
-            
-            // Also check for load error
-            profileImg.addEventListener('error', function() {
-                this.style.display = 'none';
-                profileFallback.style.display = 'flex';
-            });
-        });
     </script>
 </body>
 </html>
-
